@@ -1,11 +1,15 @@
 package com.pluralsight;
 
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
 public class Employee {
     private int employeeId;
     private String name;
     private String department;
     private double payrate;
     private double hoursWorked;
+    private int startTime;
 
 
 
@@ -15,6 +19,7 @@ public class Employee {
         this.department = department;
         this.payrate = payrate;
         this.hoursWorked = hoursWorked;
+
     }
 
     public double getTotalPay(){
@@ -35,6 +40,33 @@ public class Employee {
         return this.hoursWorked - 40;}
         return 0;
     }
+
+
+    public void punchIn() {
+       LocalTime hoursIn = LocalTime.now();
+       punchIn(hoursIn.getHour());
+
+    }
+
+    public void punchIn(int time ){
+        this.startTime = time;
+
+    }
+
+    public void punchOut(int time){
+        double hours = time - this.startTime;
+
+        this.hoursWorked += hours;
+
+        
+    }
+
+    public void punchOut(){
+        LocalTime hoursOut = LocalTime.now();
+        punchOut(hoursOut.getHour());
+    }
+    
+    
 
 
 

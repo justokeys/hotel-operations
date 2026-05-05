@@ -47,14 +47,36 @@ public class Room {
     }
 
 
-
     public boolean isAvalible() {
-        if (!this.isOccupied() || !this.isDirty()){
+        if (this.isOccupied() || this.isDirty()) {
             return true;
         } else return false;
     }
 
+    public void checkIn() {
+        if (isAvalible()) {
+            this.isDirty = true;
+            this.isOccupied = true;
+            System.out.println("This Room is currently occupied");
+        } else System.out.println("this room is available");
 
+
+    }
+
+    public void checkedOut() {
+        this.isOccupied = false;
+        this.cleanroom();
+    }
+
+    public void cleanroom() {
+        if (this.isOccupied == false) {
+            this.isDirty = false;
+        }
+
+        else System.out.println("Room is clean");
+
+
+    }
 
 
 }
