@@ -7,8 +7,8 @@ public class HotelApp {
         Room room1 = new Room(1,139,false,false);
         Reservation rev1 = new Reservation("King",3,true);
         Employee employee1 = new Employee(2283,"hausmusik","DJ",25,25);
-        Hotel hotel = new Hotel("Larry",40,15);
-        Hotel hotel1 = new Hotel("Marc",30,12,10,15);
+        Hotel hotel = new Hotel("Larry",0,0);
+        Hotel hotel1 = new Hotel("Marc",30,20,21,15);
 
         employee1.punchIn(13);
         employee1.punchOut();
@@ -22,6 +22,12 @@ public class HotelApp {
         rev1.getReservation();
 
         System.out.println("Your pay for is " + employee1.getTotalPay());
+
+        System.out.println(hotel1.getAvailableSuites());
+
+        hotel1.bookroom(2,true);
+
+        System.out.println(hotel1.getAvailableSuites());
 
 
     }

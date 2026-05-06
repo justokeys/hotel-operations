@@ -12,6 +12,8 @@ public class Hotel {
         this.name = name;
         this.numberOfRooms = numberOfRooms;
         this.numberOfSuites = numberOfSuites;
+        this.bookedSuites = 0;
+        this.bookBasicRooms = 0;
     }
 
     public Hotel(String name, int numberOfRooms, int numberOfSuites, int bookedSuites, int bookBasicRooms) {
@@ -30,45 +32,44 @@ public class Hotel {
         isSuite = suite;
     }
 
-    public boolean bookroom(int numberOfRooms,boolean isSuite){
+    public boolean bookroom(int roomIWant, boolean isSuite) {
+        if (isSuite) {
+            if (getAvailableSuites() >= roomIWant) {
+                this.bookedSuites += roomIWant;
+                return true;
+            }
 
-        if (this.numberOfRooms > 0 && this.isSuite == true){
-            System.out.println("Your room as been booked");
-            this.bookBasicRooms += 1;
-            this.getAvailableSuites() =- 1;
-            return true;
-        } return false;
-
-    }
-
-    public void getAvailableSuites() {
-        System.out.println(this.numberOfSuites);
-
-
-    }
-
-    public void getAvailiblesSuites(){
-
-        for(Hotel suit :this.numberOfSuites){
-
+        } else {
+            if (getAvailableRooms() >= roomIWant) {
+                this.bookBasicRooms += roomIWant;
+                return true;
+            }
         }
 
+        return false;
     }
 
-    public void getBookedRooms(){
+    public int getAvailableSuites() {
+        if(this.numberOfSuites - this.bookedSuites < 0){
+            System.out.println("No suites available");
+            return 0;
+
+        }else
+            return this.numberOfSuites - this.bookedSuites;
+
+
 
     }
 
 
+    public int getAvailableRooms() {
+        if(this.numberOfRooms - this.bookBasicRooms< 0){
+            System.out.println("No rooms available");
+            return 0;
 
-
-
-
-
-
-
-
-
+        }else
+            return this.numberOfRooms - this.bookBasicRooms;
+    }
 
 
 
