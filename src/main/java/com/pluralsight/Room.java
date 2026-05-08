@@ -57,23 +57,26 @@ public class Room {
         if (isAvalible()) {
             this.isDirty = true;
             this.isOccupied = true;
-            System.out.println("This Room is currently occupied");
-        } else System.out.println("this room is available");
-
+            System.out.println("Room checked in");
+        } else
+        System.out.println("This Room is currently occupied");
 
     }
 
     public void checkedOut() {
         this.isOccupied = false;
         this.cleanroom();
+        System.out.println("Room checked out");
     }
 
     public void cleanroom() {
         if (this.isOccupied == false) {
             this.isDirty = false;
+            this.isOccupied = false;
+            System.out.println("Room is clean");
         }
 
-        else System.out.println("Room is clean");
+        else System.out.println("Room is occupied");
 
 
     }
